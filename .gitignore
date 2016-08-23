@@ -1,0 +1,8 @@
+*.pyc
+staticfiles
+*.sqlite3
+.idea
+.env
+.wttd
+.DS_Store
+__pycache__
