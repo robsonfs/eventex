@@ -1,53 +1,8 @@
-{% extends "base.html" %}
-
-{% block content %}
-<section>
-	<div class="content row padding-bottom-3 desktop-12 container">
-				<h1>Formulário de Inscrição</h1>
-				<div class="desktop-6">
-						{% if messages %}
-							{% for message in messages %}
-								<div class="alert success">
-									<p>
-										{{ message }}
-									</p>
-								</div>
-							{% endfor %}
-						{% endif %}
-						<form action="." method="post">
-								{% csrf_token %}
-								<div class="form-row label-block input-text">
-										<label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
-										{{ form.name.errors }}
-										{{ form.name }}
-								</div>
-								<div class="form-row label-block input-text">
-										<label for="{{ form.cpf.id_for_label }}">{{ form.cpf.label }}</label>
-										{{ form.cpf.errors }}
-										{{ form.cpf }}
-								</div>
-								<div class="form-row label-block input-text">
-										<label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
-										{{ form.email.errors }}
-										{{ form.email }}
-								</div>
-								<div class="form-row label-block input-text">
-										<label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
-										{{ form.phone.errors }}
-										{{ form.phone }}
-								</div>
-								<p class="btn-row"><input type="submit" value="Enviar!"/></p>
-						</form>
-				</div>
-		</div>
-</section>
-{% endblock content %}
-
 {% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
-        <title>Eventex - O maior encontro hacker do mundo!</title>
+        <title>{% block title %}Eventex - O maior encontro hacker do mundo!{% endblock %}</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -88,5 +43,7 @@
 
             </header>
         </div>
+				{% block content %}
+				{% endblock content %}
     </body>
 </html>
